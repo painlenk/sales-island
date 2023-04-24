@@ -41,6 +41,3 @@ export const ProductItem = () => {
     </>
   );
 };
-function setQtd(arg0: any) {
-  throw new Error("Function not implemented.");
-}
