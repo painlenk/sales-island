@@ -29,11 +29,17 @@ export const ProductItem = () => {
       <div className="  w-3/4  p-2 ">Impressão folha simples</div>
       <div className=" w-1/6 p-2 text-center ">R$ 0,50</div>
       <div className=" w-1/6 p-2 flex justify-center text-center ">
-        <button className="border border-black w-1/5" onClick={() => subOne()}>
+        <button
+          className="border border-stone-900 w-1/5  bg-red-400  font-bold rounded-md text-stone-900"
+          onClick={() => subOne()}
+        >
           -
         </button>
         <span className="ml-1 mr-1">{qtd} un</span>
-        <button className="border border-black w-1/5" onClick={() => addOne()}>
+        <button
+          className="border border-stone-900  w-1/5 bg-green-500 font-bold rounded-md  text-stone-900"
+          onClick={() => addOne()}
+        >
           +
         </button>
       </div>

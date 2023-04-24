@@ -6,12 +6,12 @@ import { Logout } from "./Logout";
 
 export const Header = () => {
   return (
-    <div className="w-full h-full p-3 border border-black gap-4 flex flex-col text-slate-100">
+    <div className="w-full h-full p-3  gap-4 flex flex-col text-slate-200">
       <Org title="Seven-Byte" />
       <User />
-      <Divider />
+      <Divider color="#9ca3af" />
       <Nav />
-      <Divider />
+      <Divider color="#9ca3af" />
       <Logout />
     </div>
   );
