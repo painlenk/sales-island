@@ -24,7 +24,7 @@ export const ProductItem = () => {
     setValue(productValue * qtd);
   }, [qtd]);
   return (
-    <>
+    <div className="flex w-full mt-2  text-stone-200">
       <div className=" w-1/6 p-2 ">0001</div>
       <div className="  w-3/4  p-2 ">Impressão folha simples</div>
       <div className=" w-1/6 p-2 text-center ">R$ 0,50</div>
@@ -44,6 +44,6 @@ export const ProductItem = () => {
         </button>
       </div>
       <div className=" w-1/6 p-2 text-center">R$ {value}</div>
-    </>
+    </div>
   );
 };
