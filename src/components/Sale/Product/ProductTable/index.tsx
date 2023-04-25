@@ -1,7 +1,7 @@
 export const ProductTable = () => {
   return (
-    <div className="overflow-x-auto max-h-60 rounded-lg">
-      <table className="table w-full">
+    <div className="rounded-lg ">
+      <table className="table w-full ">
         {/* head */}
         <thead>
           <tr>
