@@ -5,8 +5,8 @@ import { BiClipboard } from "react-icons/bi";
 export const Sale = () => {
   return (
     <main
-      className="flex flex-col p-6  w-3/4 items-center absolute"
-      style={{ right: "4%" }}
+      className="flex flex-col p-6  w-3/4 items-center"
+      style={{ marginLeft: "22%" }}
     >
       <div className="w-full pl-11">
         <span className="text-stone-200 text-left font-semibold flex items-center ">

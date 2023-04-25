@@ -5,7 +5,7 @@ interface IProps {
 
 export const Layout: React.FC<IProps> = ({ children }) => {
   return (
-    <div className="w-screen  flex">
+    <div className="w-full">
       <header className=" w-1/5 h-full bg-stone-800 border-r border-stone-600 fixed">
         <Header />
       </header>
