@@ -3,6 +3,7 @@ import { Product } from "./Product";
 import { BiClipboard } from "react-icons/bi";
 import { Summary } from "./Product/Summary";
 import { FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { ActionButton } from "./ActionButton";
 
 export const Sale = () => {
   return (
@@ -19,7 +20,7 @@ export const Sale = () => {
       <ClientForm />
       <Product />
 
-      <div className="w-full pl-11 pt-4">
+      <div className="w-full pl-11 pt-8 ">
         <span className="text-stone-200 text-left font-semibold flex items-center ">
           <BiClipboard fontSize={"24px"} className="mr-2" />
           Resumo da Venda
@@ -30,23 +31,8 @@ export const Sale = () => {
         <Summary />
 
         <div className="w-full flex justify-around items-center pt-4 ">
-          <button className="btn  btn-error rounded-lg mt-4 max-w-xs m-auto hover:border hover:border-red-500 hover:text-black">
-            <FiXCircle
-              fontSize={"24px"}
-              className="mr-2"
-              fontWeight={"bolder"}
-            />
-            Cancelar compra
-          </button>
-
-          <button className="btn  btn-success rounded-lg mt-4 max-w-xs m-auto hover:border hover:border-green-500  hover:text-black">
-            <FiCheckCircle
-              fontSize={"24px"}
-              className="mr-2"
-              fontWeight={"bolder"}
-            />
-            Realizar compra
-          </button>
+          <ActionButton buttonType="cancel" />
+          <ActionButton buttonType="pay" />
         </div>
       </div>
     </main>
