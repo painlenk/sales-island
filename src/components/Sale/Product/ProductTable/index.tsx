@@ -5,16 +5,19 @@ export const ProductTable = ({}: any) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("http://localhost:3002/api/getProducts");
+      const data = await fetch(
+        "http://localhost:3000/api/services/prisma/getProducts"
+      );
       const products: IProduct[] = await data.json();
 
       setProducts(products);
     };
+
     fetchData().catch(console.error);
   }, []);
 
   return (
-    <div className="rounded-lg overflow-auto ">
+    <div className="rounded-lg overflow-auto max-h-96 ">
       <table className="table w-full ">
         <thead>
           <tr>
