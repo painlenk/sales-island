@@ -6,3 +6,5 @@ interface IProduct {
   updatedAt: string;
   createdAt: string;
 }
+
+type ICreateProduct = Omit<IProduct, "id" | "updatedAt" | "createdAt">;

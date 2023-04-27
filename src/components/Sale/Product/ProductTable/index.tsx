@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const ProductTable = ({}: any) => {
+export const ProductTable = () => {
   const [productsList, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
