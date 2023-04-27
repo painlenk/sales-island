@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 interface IFormInput {
   name: string;
-  price: string;
+  price: number;
   stock: number;
 }
 
@@ -12,12 +12,13 @@ export const ProductForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
-      price: "",
-      stock: null,
+      price: 0,
+      stock: 0,
     },
     mode: "all",
     criteriaMode: "all",
@@ -27,8 +28,10 @@ export const ProductForm = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
-  console.log(errors);
 
+  const clearForm = () => {
+    reset();
+  };
   return (
     <div className="flex flex-col w-11/12 mt-4 mb-4 rounded-lg p-4 text-center bg-stone-800 border border-stone-600">
       <span className="text-cyan-400">Produto</span>
@@ -48,8 +51,8 @@ export const ProductForm = () => {
           <div>
             <input
               {...register("price")}
-              type="price"
-              placeholder="Produto"
+              type="number"
+              placeholder="Preço"
               className="input input-bordered  w-full  rounded-lg  h-12"
             />
             {errors.price && (
@@ -60,8 +63,8 @@ export const ProductForm = () => {
           <div>
             <input
               {...register("stock")}
-              type="stock"
-              placeholder="Produto"
+              type="number"
+              placeholder="Quantidade para estoque"
               className="input input-bordered  w-full  rounded-lg  h-12"
             />
             {errors.stock && (
@@ -71,7 +74,10 @@ export const ProductForm = () => {
         </div>
 
         <div className="w-full flex justify-around items-center pt-4 ">
-          <button className="btn  btn-error rounded-lg mt-4 max-w-xs m-auto hover:border hover:border-red-500 hover:text-black">
+          <button
+            onClick={clearForm}
+            className="btn  btn-error rounded-lg mt-4 max-w-xs m-auto hover:border hover:border-red-500 hover:text-black"
+          >
             Cancelar
           </button>
 
