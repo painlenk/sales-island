@@ -6,7 +6,7 @@ export const ProductTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        "http://localhost:3000/api/services/prisma/getProducts"
+        "http://localhost:3000/api/services/prisma/getValidProducts"
       );
       const products: IProduct[] = await data.json();
 

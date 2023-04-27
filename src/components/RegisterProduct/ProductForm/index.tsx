@@ -1,5 +1,6 @@
 import { createProductSchema } from "@/schemas/form/createProductSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface IFormInput {
@@ -9,6 +10,8 @@ interface IFormInput {
 }
 
 export const ProductForm = () => {
+  const [created, setCreated] = useState<boolean | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -17,7 +20,7 @@ export const ProductForm = () => {
   } = useForm({
     defaultValues: {
       name: "",
-      price: 0,
+      price: "",
       stock: 0,
     },
     mode: "all",
@@ -25,8 +28,35 @@ export const ProductForm = () => {
     resolver: zodResolver(createProductSchema),
   });
 
+  console.log("created -->", created);
+
+  const createProduct = async (data: IFormInput) => {
+    try {
+      const request = await fetch(
+        "http://localhost:3000/api/services/prisma/setProducts",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
+        }
+      );
+
+      console.log(request);
+      if (request.status !== 200) {
+        setCreated(false);
+        return;
+      }
+
+      setCreated(true);
+    } catch (e) {
+      setCreated(false);
+      return "Não foi possível realizar o cadastro do produto";
+    }
+  };
+
   const onSubmit = (data) => {
     console.log(data);
+    createProduct(data);
   };
 
   const clearForm = () => {
@@ -51,7 +81,7 @@ export const ProductForm = () => {
           <div>
             <input
               {...register("price")}
-              type="number"
+              type="string"
               placeholder="Preço"
               className="input input-bordered  w-full  rounded-lg  h-12"
             />
@@ -85,6 +115,20 @@ export const ProductForm = () => {
             type="submit"
             className="btn  btn-success rounded-lg mt-4 max-w-xs m-auto hover:border hover:border-green-500  hover:text-black"
           />
+        </div>
+
+        <div className="mt-8">
+          {created && (
+            <span className="text-green-500">
+              Produto cadastrado com sucesso
+            </span>
+          )}
+
+          {created === false && (
+            <span className="text-red-500">
+              Não foi possível cadastrar o produto
+            </span>
+          )}
         </div>
       </form>
     </div>

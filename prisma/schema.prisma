@@ -15,4 +15,5 @@ model Products {
   createdAt DateTime @default(now())
   updatedAt DateTime
   stock     Int
+  active    Boolean  @default(true)
 }
