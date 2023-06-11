@@ -1,13 +1,15 @@
 import { createProductSchema } from "@/schemas/form/createProductSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import {useState} from 'react'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {z} from 'zod'
 import { useForm } from "react-hook-form";
 
-interface IFormInput {
-  name: string;
-  price: number;
-  stock: number;
-}
+
+
+type CreateProduct = z.infer<typeof createProductSchema>
+
+
+
 
 export const ProductForm = () => {
   const [created, setCreated] = useState<boolean | null>(null);
@@ -17,7 +19,7 @@ export const ProductForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<CreateProduct>({
     defaultValues: {
       name: "",
       price: "",
@@ -30,7 +32,7 @@ export const ProductForm = () => {
 
   console.log("created -->", created);
 
-  const createProduct = async (data: IFormInput) => {
+  const createProduct = async (data: CreateProduct) => {
     try {
       const request = await fetch(
         "http://localhost:3000/api/services/prisma/setProducts",
@@ -54,7 +56,7 @@ export const ProductForm = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data : CreateProduct) => {
     console.log(data);
     createProduct(data);
   };
@@ -67,15 +69,15 @@ export const ProductForm = () => {
       <span className="text-cyan-400">Produto</span>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 grid-rows-3  gap-8 selection:border mt-4 text-right">
-          <div className="h-18  flex flex-col gap-1">
+          <div className="h-20  flex flex-col gap-1">
             <input
               {...register("name")}
               type="text"
               placeholder="Produto"
               className="input input-bordered  w-full  rounded-lg  h-12"
             />
-            {errors.name && (
-              <p className="text-red-400">{errors.name.message}</p>
+            {errors?.name && (
+              <p className="text-red-400">{errors?.name?.message}</p>
             )}
           </div>
           <div>
