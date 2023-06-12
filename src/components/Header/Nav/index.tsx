@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FcPaid,
   FcMoneyTransfer,
@@ -11,7 +12,9 @@ export const Nav = () => {
       <ul className="flex flex-col gap-3">
         <li className="hover:underline cursor-pointer hover:text-cyan-400 hover:bg-stone-700 flex gap-1 justify-items-start w-full pt-2 pb-2">
           <FcPaid fontSize={"24px"} className="mr-2" />
-          Vendas
+          <Link href={'/'}>
+            vendas
+          </Link>
         </li>
 
         <li className="hover:underline cursor-pointer hover:text-cyan-400 hover:bg-stone-700  flex gap-1 justify-items-start w-full pt-2 pb-2">
@@ -26,7 +29,9 @@ export const Nav = () => {
 
         <li className="hover:underline cursor-pointer hover:text-cyan-400 hover:bg-stone-700  flex gap-1 justify-items-start w-full pt-2 pb-2">
           <FcSurvey fontSize={"24px"} className="mr-2" />
-          Cadastro de Produtos
+          <Link href={'/cadastroProduto'}>
+            Cadastro de produtos
+          </Link>
         </li>
 
         <li className="hover:underline cursor-pointer hover:text-cyan-400 hover:bg-stone-700  flex gap-1 justify-items-start w-full pt-2 pb-2">

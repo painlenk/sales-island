@@ -17,9 +17,9 @@ export default async function handle(req: any, res: any) {
       },
     });
 
-    res.status(200);
+    res.status(200).end();
   } catch (err) {
     console.log(err);
-    res.status(403).json({ err: "Error occurred." });
+    res.status(403).json({ err: "Error occurred." }).end();
   }
 }
